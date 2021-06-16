@@ -1,0 +1,48 @@
+<nav class="navbar navbar-dark bg-info">
+  <div class="container-fluid">
+    <h1 class="title">Angular CRUD</h1>
+    <div class="d-flex">
+      <button type="button" class="btn btn-primary"
+              (click)="showDialog()" >Add patients</button>
+    </div>
+  </div>
+</nav>
+
+<table class="table table-info table-striped table-hover table-my">
+  <thead>
+    <tr>
+      <th>№</th>
+      <th>ФИО</th>
+      <th>Пол</th>
+      <th>Дата рождения</th>
+      <th>Адрес</th>
+      <th>Телефон</th>
+      <th>Правка</th>
+      <th>Удаление</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th colspan='11' class="text-center">Year: 2021</th>
+    </tr>
+  </tfoot>
+  <tbody id="table-main">
+    <tr>
+      <td>1</td>
+      <td>Александр Иванович Калиногорский</td>
+      <td>мужской</td>
+      <td>25.04.1986</td>
+      <td>г.Новокузнецк ул.Черноморская д.55 кв.44</td>
+      <td>89539999999</td>
+      <td class="select">
+        <a class="btn btn-info" href='#'>Изменить</a>
+      </td>
+      <td class="select">
+        <a class="btn btn-danger" href='#'>Удалить</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<app-modal-add-patient *ngIf="isModalDialogVisible" (isConfirmed)="closeModal($event)"></app-modal-add-patient>
+
