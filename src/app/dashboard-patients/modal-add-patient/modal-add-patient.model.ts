@@ -6,7 +6,7 @@ export class PatientModel{
   middle_name: string = "";
   gender: string = "";
   birth: DatePipe = new DatePipe('');
-  adress: string = "";
+  address: string = "";
   phoneNumber: string = "";
   age: number = 0;
 }

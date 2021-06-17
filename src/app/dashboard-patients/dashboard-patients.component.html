@@ -12,8 +12,11 @@
   <thead>
     <tr>
       <th>№</th>
-      <th>ФИО</th>
+      <th>Фамилия</th>
+      <th>Имя</th>
+      <th>Отчество</th>
       <th>Пол</th>
+      <th>Возраст</th>
       <th>Дата рождения</th>
       <th>Адрес</th>
       <th>Телефон</th>
@@ -27,22 +30,33 @@
     </tr>
   </tfoot>
   <tbody id="table-main">
-    <tr>
-      <td>1</td>
-      <td>Александр Иванович Калиногорский</td>
-      <td>мужской</td>
-      <td>25.04.1986</td>
-      <td>г.Новокузнецк ул.Черноморская д.55 кв.44</td>
-      <td>89539999999</td>
+    <tr *ngFor="let row of patientData">
+      <td>{{row.index}}</td>
+      <td>{{row.surname}}</td>
+      <td>{{row.name}}</td>
+      <td>{{row.middle_name}}</td>
+      <td>{{row.gender}}</td>
+      <td>{{row.age}}</td>
+      <td>{{row.birth}}</td>
+      <td>{{row.address}}</td>
+      <td>{{row.phoneNumber}}</td>
       <td class="select">
-        <a class="btn btn-info" href='#'>Изменить</a>
+        <a (click)="showDialog()"
+           (click)="setPatient(row)" class="btn btn-info" href='#'>Изменить</a>
       </td>
       <td class="select">
-        <a class="btn btn-danger" href='#'>Удалить</a>
+        <a (click)="deletePatient(row)" class="btn btn-danger" href='#'>Удалить</a>
       </td>
     </tr>
   </tbody>
 </table>
 
-<app-modal-add-patient *ngIf="isModalDialogVisible" (isConfirmed)="closeModal($event)"></app-modal-add-patient>
+
+
+<app-modal-add-patient *ngIf="isModalDialogVisible"
+                       (isConfirmed)="closeModal($event)"
+                       (emitReload)="reload($event)"
+                       [selectedUser]="selectedUser"
+></app-modal-add-patient>
+
 
