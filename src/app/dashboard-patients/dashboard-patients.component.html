@@ -1,9 +1,10 @@
 <nav class="navbar navbar-dark bg-info">
   <div class="container-fluid">
-    <h1 class="title">Angular CRUD</h1>
+    <h1 class="title">Таблица пациентов</h1>
     <div class="d-flex">
       <button type="button" class="btn btn-primary"
-              (click)="showDialog()" >Add patients</button>
+              (click)="showModalAddPatients()" (click)="clickAddPatient()">Добавить пациента
+      </button>
     </div>
   </div>
 </nav>
@@ -20,18 +21,19 @@
       <th>Дата рождения</th>
       <th>Адрес</th>
       <th>Телефон</th>
+      <th>Визиты</th>
       <th>Правка</th>
       <th>Удаление</th>
     </tr>
   </thead>
   <tfoot>
     <tr>
-      <th colspan='11' class="text-center">Year: 2021</th>
+      <th colspan='12' class="text-center">Год: 2021</th>
     </tr>
   </tfoot>
   <tbody id="table-main">
-    <tr *ngFor="let row of patientData">
-      <td>{{row.index}}</td>
+    <tr *ngFor="let row of patientData; index as i">
+      <td>{{i + 1}}</td>
       <td>{{row.surname}}</td>
       <td>{{row.name}}</td>
       <td>{{row.middle_name}}</td>
@@ -41,8 +43,13 @@
       <td>{{row.address}}</td>
       <td>{{row.phoneNumber}}</td>
       <td class="select">
-        <a (click)="showDialog()"
-           (click)="setPatient(row)" class="btn btn-info" href='#'>Изменить</a>
+        <a (click)="showModalVisits()"
+           (click)="sendVisits(row)" class="btn btn-info" href='#'>Показать</a>
+      </td>
+      <td class="select">
+        <a (click)="showModalAddPatients()"
+           (click)="sendPatient(row)" class="btn btn-primary" href='#'>Изменить
+        </a>
       </td>
       <td class="select">
         <a (click)="deletePatient(row)" class="btn btn-danger" href='#'>Удалить</a>
@@ -52,11 +59,18 @@
 </table>
 
 
-
-<app-modal-add-patient *ngIf="isModalDialogVisible"
-                       (isConfirmed)="closeModal($event)"
-                       (emitReload)="reload($event)"
-                       [selectedUser]="selectedUser"
+<app-modal-add-patient
+  *ngIf="isModalPatientVisible"
+  (isConfirmed)="closeModalPatients($event)"
+  (emitReload)="reload($event)"
+  [selectedUser]="selectedUser"
+  [showAdd]="showAdd"
+  [showUpdate]="showUpdate"
 ></app-modal-add-patient>
 
+<app-modal-show-visit
+  *ngIf="isModalVisitsVisible"
+  (isConfirmed)="closeModalVisits($event)"
+  [selectedUser]="selectedUser"
+></app-modal-show-visit>
 

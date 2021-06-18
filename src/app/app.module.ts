@@ -7,12 +7,16 @@ import { DashboardPatientsComponent } from './dashboard-patients/dashboard-patie
 import { ModalAddPatientComponent } from './dashboard-patients/modal-add-patient/modal-add-patient.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { ModalShowVisitComponent } from './dashboard-patients/modal-show-visit/modal-show-visit.component';
+import { ModalAddVisitComponent } from './dashboard-patients/modal-show-visit/modal-add-visit/modal-add-visit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ModalAddPatientComponent,
-    DashboardPatientsComponent
+    DashboardPatientsComponent,
+    ModalShowVisitComponent,
+    ModalAddVisitComponent
   ],
   imports: [
     BrowserModule,

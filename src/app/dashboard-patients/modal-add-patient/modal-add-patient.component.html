@@ -1,4 +1,4 @@
-<div class="modal-my">
+<div class="modal-patients">
   <div class="container pt-3 modal-my__container">
     <div class="row">
       <div class="col-lg-6 offset-lg-3">
@@ -7,7 +7,6 @@
             <h3>
               Добавление сведений о пациенте
             </h3>
-            <span class="badge badge-danger">TODOS LOS CAMPOS SON OBLIGATORIOS</span>
             <form [formGroup]="formValue">
               <div class="mb-3 form-floating">
                 <label for="patient-name" class="form-label text-left">Имя</label>
@@ -29,8 +28,9 @@
                 <input type="text" formControlName="address" class="form-control" id="patient-address">
               </div>
               <div class="mb-3">
-                <label for="patient-phonenumber" class="form-label">Телефон</label>
-                <input type="text" formControlName="phonenumber" class="form-control" id="patient-phonenumber">
+                <label for="patient-phoneNumber" class="form-label">Телефон</label>
+                <input type="text" formControlName="phoneNumber"
+                       class="form-control" id="patient-phoneNumber">
               </div>
               <div class="mb-3">
                 <label for="patient-age" class="form-label">Возраст</label>
@@ -62,11 +62,11 @@
             <button type="button" (click)="close()" id="cancel"
                     class="btn btn-secondary btn-lg mr-3">Отмена
             </button>
-            <button type="button" (click)="postPatientDatails()"
-                    class="btn btn-info btn-lg">Добавить
+            <button type="button" (click)="postPatientDatails()" *ngIf="showAdd"
+                    class="btn btn-primary btn-lg">Добавить
             </button>
-            <button type="button" (click)="updatePatientDatails()"
-                    class="btn btn-info btn-lg">Изменить
+            <button type="button" (click)="updatePatientDatails()" *ngIf="showUpdate"
+                    class="btn btn-primary btn-lg">Изменить
             </button>
           </div>
         </div>
@@ -74,3 +74,5 @@
     </div>
   </div>
 </div>
+
+

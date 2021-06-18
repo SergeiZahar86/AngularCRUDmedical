@@ -1,0 +1,66 @@
+<div class="modal-visits">
+  <div class="modal-visits__container">
+    <nav class="navbar navbar-dark bg-info">
+      <div class="container-fluid">
+        <h1 class="title">Визиты пациента</h1>
+        <div class="d-flex">
+          <button type="button" class="btn btn-primary"
+                  (click)="showModalAddVisit()" (click)="clickAddVisit()">Добавить визит
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <table class="table table-visits table-info table-striped table-hover table-my">
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Дата посещения</th>
+          <th>Тип посещения</th>
+          <th>Диагноз</th>
+          <th>Правка</th>
+          <th>Удаление</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th colspan='12' class="text-center">Год: 2021</th>
+        </tr>
+      </tfoot>
+      <tbody id="table-main">
+        <tr *ngFor="let row of visitsData; index as i">
+          <td>{{i + 1}}</td>
+          <td>{{row.date}}</td>
+          <td>{{row.type}}</td>
+          <td>{{row.diagnosis}}</td>
+          <td class="select">
+            <a (click)="showModalAddVisit()"
+               (click)="sendVisits(row)" class="btn btn-primary" href='#'>Изменить
+            </a>
+          </td>
+          <td class="select">
+            <a (click)="deleteVisit(row)" class="btn btn-danger" href='#'>Удалить</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="container-fluid bg-info footer-visits ">
+      <div class="d-flex ">
+        <button type="button" (click)="confirm()"
+                class="btn btn-primary mx-auto ">Закрыть
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-modal-add-visit
+  *ngIf="isModalAddVisitVisible"
+  (isConfirmed)="closeModalAddVisit($event)"
+  (emitReload)="reload()"
+  [selectedVisit]="selectedVisit"
+  [selectedUser]="selectedUser"
+  [showAdd]="showAdd"
+  [showUpdate]="showUpdate"
+></app-modal-add-visit>
+

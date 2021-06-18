@@ -1,0 +1,55 @@
+<div class="modal-add-visit">
+  <div class="container pt-3 modal-add-visit__container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card ">
+          <div class="card-body">
+            <h3>
+              Добавление сведений о визите
+            </h3>
+            <span class="badge badge-danger">TODOS LOS CAMPOS SON OBLIGATORIOS</span>
+            <form [formGroup]="formValue">
+              <div class="mb-3">
+                <label for="visit-diagnosis" class="form-label text-left">Диагноз</label>
+                <input type="text" formControlName="diagnosis" class="form-control" id="visit-diagnosis"
+                       aria-describedby="emailHelp">
+              </div>
+              <div class="form-group mb-3">
+                <label class="form-label" for="visit-Date">Дата осмотра:</label>
+                <input type="date" formControlName="date" class="form-control" id="visit-Date">
+              </div>
+              <div class="form-check mb-3">
+                <input class="form-check-input" value="первичный" name="type"
+                       formControlName="type" (change)="changeType($event)"
+                       type="radio" id="type-Radio1">
+                <label class="form-check-label" for="type-Radio1">
+                  Первичный
+                </label>
+              </div>
+              <div class="form-check mb-5">
+                <input class="form-check-input" value="повторный" name="type"
+                       formControlName="type" (change)="changeType($event)"
+                       type="radio" id="type-Radio2" checked>
+                <label class="form-check-label" for="type-Radio2">
+                  Повторный
+                </label>
+              </div>
+
+            </form>
+            <button type="button" (click)="close()" id="cancel"
+                    class="btn btn-secondary btn-lg mr-3">Отмена
+            </button>
+            <button type="button" (click)="postVisitDatails()" *ngIf="showAdd"
+                    class="btn btn-primary btn-lg">Добавить
+            </button>
+            <button type="button" (click)="updateVisitDatails()" *ngIf="showUpdate"
+                    class="btn btn-primary btn-lg">Изменить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
