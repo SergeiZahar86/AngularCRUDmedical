@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { ModalShowVisitComponent } from './dashboard-patients/modal-show-visit/modal-show-visit.component';
 import { ModalAddVisitComponent } from './dashboard-patients/modal-show-visit/modal-add-visit/modal-add-visit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ModalAddVisitComponent } from './dashboard-patients/modal-show-visit/mo
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
